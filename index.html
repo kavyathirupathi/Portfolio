@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kavya T | Entry-Level Data Analyst & Web Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --dark-bg: #0a0a0a;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-light: #ffffff;
+            --text-dark: #333;
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        [data-theme="dark"] {
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-light: #e2e8f0;
+            --text-dark: #f8fafc;
+            background: var(--dark-bg);
+            color: var(--text-light);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--text-dark);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        /* Hero */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background: var(--primary-gradient);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--secondary-gradient);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(245, 87, 108, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            margin: 1rem auto 0;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        /* About */
+        #about .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: var(--secondary-gradient);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .skill-item i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .testimonial-carousel {
+            display: flex;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 2rem;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+
+        .testimonial-slide.active {
+            opacity: 1;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Contact */
+        #contact form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            background: var(--glass-bg);
+            color: var(--text-dark);
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            #about .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Kavya T</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1>Hi, I'm <span style="background: var(--secondary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Kavya T</span></h1>
+Entry-Level Data Analyst & Web Developer passionate about data insights and interactive web apps. Eager fresher seeking opportunities.
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary"><i class="fas fa-rocket"></i> Hire Me Now</a>
+                    <a href="#projects" class="btn btn-secondary"><i class="fas fa-eye"></i> View Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 data-aos="fade-up">About Me</h2>
+        <div class="about-grid" data-aos="fade-up">
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="glass-card">
+<h3>Entry-Level Data Analyst & Fresher Web Developer</h3>
+                <p>Recent graduate skilled in data analysis (Python, SQL, Tableau) and full-stack web development. Created security and safety web apps during studies. Enthusiastic about turning data into insights and building user-friendly applications. Seeking entry-level roles/internships.</p>
+                <div style="margin-top: 2rem;">
+                    <strong>📧 kavyathirupathi1809@gmail.com</strong><br>
+                    <strong>📱 +91 9361072670</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2 data-aos="fade-up">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                <div style="height: 220px; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                    <i class="fas fa-link"></i>
+                </div>
+                <div class="project-overlay">
+                    <h3>URL Guard Security</h3>
+                    <p>Advanced URL scanner with ML threat detection, real-time dashboard, scan history. Built with pure JS.</p>
+                    <a href="url-guard.html" class="btn btn-primary" style="margin-top: 1rem;">Live Demo →</a>
+                </div>
+            </div>
+            <div class="project-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                <div style="height: 220px; background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="project-overlay">
+                    <h3>Public Safety System</h3>
+                    <p>Government emergency platform with incident mapping, real-time alerts, reporting dashboard.</p>
+                    <a href="public-safety.html" class="btn btn-primary" style="margin-top: 1rem;">Live Demo →</a>
+                </div>
+            </div>
+            <div class="project-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                <div style="height: 220px; background: var(--success-gradient); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="project-overlay">
+                    <h3>Corporate Landing (Coming Soon)</h3>
+                    <p>Modern corporate website with animations, CMS integration, SEO optimized for businesses.</p>
+                    <a href="#" class="btn btn-secondary" style="margin-top: 1rem;">Details →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <h2 data-aos="fade-up">Skills & Technologies</h2>
+        <div class="skills-grid" data-aos="fade-up" data-aos-delay="200">
+            <div class="skill-item">
+                <i class="fab fa-python"></i>
+                <div>Python</div>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-database"></i>
+                <div>SQL</div>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-html5"></i>
+                <div>HTML/CSS/JS</div>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-chart-bar"></i>
+                <div>Tableau</div>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-chart-line"></i>
+                <div>Excel/Power BI</div>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-mobile-alt"></i>
+                <div>Responsive Web</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials container">
+        <h2 data-aos="fade-up" style="color: white;">What Clients Say</h2>
+        <div class="testimonial-carousel">
+            <div class="testimonial-slide active glass-card">
+                <p>"Kavya's data analysis and web projects show excellent fresher potential!"</p>
+                <div style="margin-top: 1rem; font-weight: 600;">– Project Mentor</div>
+            </div>
+            <div class="testimonial-slide glass-card">
+                <p>"Great enthusiasm and skills in data viz and web dev as entry-level talent."</p>
+                <div style="margin-top: 1rem; font-weight: 600;">– Academic Supervisor</div>
+            </div>
+            <div class="testimonial-slide glass-card">
+                <p>"Strong foundation in analytics and development – ready for junior roles!"</p>
+                <div style="margin-top: 1rem; font-weight: 600;">– Business Owner</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="container">
+<h2 data-aos="fade-up">Skills & Services for Entry-Level Roles</h2>
+        <div class="services-grid">
+            <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-code" style="font-size: 3rem; color: #667eea; margin-bottom: 1rem;"></i>
+                <h3>Custom Web Apps</h3>
+                <p>Full-stack development from concept to launch</p>
+            </div>
+            <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-paint-brush" style="font-size: 3rem; color: #f093fb; margin-bottom: 1rem;"></i>
+                <h3>UI/UX Design</h3>
+                <p>Attractive, user-friendly interfaces</p>
+            </div>
+            <div class="glass-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-rocket" style="font-size: 3rem; color: #4facfe; margin-bottom: 1rem;"></i>
+                <h3>Project Delivery</h3>
+                <p>Eager junior contributor for data/web projects</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2 data-aos="fade-up">Get In Touch</h2>
+        <form data-aos="fade-up" data-aos-delay="200" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Project Brief">
+            </div>
+            <div class="form-group">
+                <textarea rows="5" placeholder="Tell me about your project..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message <i class="fas fa-paper-plane"></i></button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="mailto:kavyathirupathi1809@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+919361072670"><i class="fas fa-phone"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+<p>&copy; 2026 Kavya T. Data Analyst & Full-Stack Developer. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000 });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Theme toggle
+        function toggleTheme() {
+            document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+            const icon = document.querySelector('.theme-toggle i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+
+        // Testimonial carousel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 4000);
+
+        // Form submit
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you! Your message has been sent. I\'ll get back to you soon.');
+            e.target.reset();
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            document.querySelector('header').style.background = window.scrollY > 100 
+                ? 'rgba(255,255,255,0.98)' 
+                : 'rgba(255,255,255,0.95)';
+        });
+    </script>
+</body>
+</html>
